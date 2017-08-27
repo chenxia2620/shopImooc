@@ -12,7 +12,7 @@
             $chars = join('', array_merge(range('a', 'z'), range('A', 'Z')));
         }elseif ($type == 3)
         {
-            $chars = join('', array_merge(range('a', 'z'), range('A', "Z"), range(0, 9)));
+            $chars = join('', array_merge(range('a', 'z'), range('A', 'z'), range(0, 9)));
         }
         if ($length > strlen($chars))
         {
@@ -22,4 +22,3 @@
         return substr($chars, 0, $length);
     }
     
-?>
