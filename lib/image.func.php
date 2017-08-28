@@ -10,17 +10,18 @@
         $width = 80;
         $height = 28;
         $image = imagecreatetruecolor($width, $height);
+
+        //定义画布的填充颜色
         $white = imagecolorallocate($image, 255, 255, 255);
         $black = imagecolorallocate($image, 0, 0, 0);
 
         //用填充矩形填充画布
         imagefilledrectangle($image, 1, 1, $width - 2, $height - 2, $white);
-        
-        
-        $chars = buildRandomString($type, $length);
-        
+
+        $chars = buildRandomString($type, $length);        
         $_SESSION[$sess_name] = $chars;
         $fontfiles = array("msyh.ttc", "msyhbd.ttc", "msyhl.ttc", "SIMLI.TTF", "simsun.ttc", "SIMYOU.TTF");
+
         for ($i = 0; $i < $length; $i ++)
         {
             $size = mt_rand(14, 18);
@@ -36,8 +37,7 @@
             imagettftext($image, $size, $angle, $x, $y, $color, $fontfile, $text);
         }
 
-        //干扰元素
-        
+        //干扰元素      
         if ($pixel)
         {
             for ($i = 0; $i < 50; $i ++)
@@ -56,7 +56,11 @@
         }
 
         header("content-type:image/gif");
+
+        //生成GIF格式的图像
         imagegif($image);
+
+        //销毁图像，释放内存
         imagedestroy($image);
     }
     
