@@ -1,5 +1,5 @@
 <?php
-
+    //验证码的字符串制作
     function buildRandomString($type=1, $length=4)
     {
         
